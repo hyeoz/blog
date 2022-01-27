@@ -29,7 +29,7 @@ const QuillWrapper = styled.div`
     font-size: 1.125rem;
     line-height: 1.5;
   }
-  .ql-editor .ql-blank::before {
+  .ql-editor .ql-blank:before {
     left: 0px;
   }
 `;

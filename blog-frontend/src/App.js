@@ -11,7 +11,7 @@ function App() {
     <>
       <Routes>
         {/* ID앞에 @가 붙는 경우에 파라미터로 인식할 수 있도록 */}
-        <Route path={'/*' || '/@:username'} element={<PostListPage />} />
+        <Route path={"/*" || '/@:username'} element={<PostListPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="write" element={<WritePage />} />

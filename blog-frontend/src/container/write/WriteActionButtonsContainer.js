@@ -29,15 +29,15 @@ const WriteActionButtonsContainer = () => {
   // 성공 혹은 실패시 할 작업
   useEffect(() => {
     if (post) {
-      console.log(post);
+      // console.log(post);
       const {_id, user} = post;
-      console.log("post 불러오기 성공");
+      // console.log("post 불러오기 성공");
       navigate(`/@${user.username}/${_id}`);
     }
     if (postError) {
       console.log(postError);
     }
-  }, [post, postError])
+  }, [post, postError, navigate])
 
   return <WriteActionButtons onPublish={onPublish} onCancel={onCancel} />;
 };
