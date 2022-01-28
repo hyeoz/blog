@@ -29,7 +29,7 @@ const QuillWrapper = styled.div`
     font-size: 1.125rem;
     line-height: 1.5;
   }
-  .ql-editor .ql-blank::before {
+  .ql-editor .ql-blank:before {
     left: 0px;
   }
 `;
@@ -64,6 +64,14 @@ const Editor = ({title, body, onChangeField}) => {
       }
     });
   }, [onChangeField]);
+
+  // 수정페이지에서 포스트 본문 유지되도록
+  const mounted = useRef(false);
+  useEffect(() => {
+    if (mounted.current) return;
+    mounted.current = true;
+    quillInstance.current.root.innerHTML = body;
+  }, [body]);
 
   const onChangeTitle = (e) => {
     onChangeField({key: 'title', value: e.target.value});

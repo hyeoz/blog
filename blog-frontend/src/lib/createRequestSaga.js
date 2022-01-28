@@ -15,9 +15,11 @@ export default function createRequestSaga(type, req) {
     yield put(startLoading(type)) // 로딩 시작
     try {
       const res = yield call(req, action.payload);
+      // console.log(res)
       yield put({
         type: SUCCESS,
         payload: res.data,
+        meta: res,
       });
     } catch (e) {
       yield put({
