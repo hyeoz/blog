@@ -280,6 +280,8 @@ findOneAndRemove() : 특정 조건 만족하는 데이터 하나 찾아서 제�
 */
 export const remove = async (ctx) => {
   const { id } = ctx.params;
+  // console.log(id, "backend id");
+  // console.log(ctx, "backend ctx");
   try {
     await Post.findByIdAndRemove(id).exec();
     ctx.status = 204; // No content (응답은 성공했지만 데이터는 없음)
