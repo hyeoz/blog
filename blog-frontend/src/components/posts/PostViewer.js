@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet-async";
 import styled from "styled-components";
 import palette from "../../lib/styles/palette";
 import Responsive from "../common/Responsive";
@@ -52,7 +53,7 @@ const PostContent = styled.div`
   color: ${palette.gray[8]};
 `;
 
-const PostViewer = ({post, error, loading}) => {
+const PostViewer = ({post, error, loading, actionButtons}) => {
   // 에러 발생시
   if (error) {
     if (error.response && post.response.status === 404) {
@@ -66,8 +67,12 @@ const PostViewer = ({post, error, loading}) => {
   }
 
   const {title, body, user, publishedDate, tags} = post;
+
   return (
     <PostViewerBlock>
+      <Helmet>
+        <title>{title}</title>
+      </Helmet>
       <PostHead>
         <h1>{title}</h1>
         <SubInfo username={user.username} publishedDate={publishedDate} hasMarginTop />
@@ -82,6 +87,7 @@ const PostViewer = ({post, error, loading}) => {
           ))}
         </Tags> */}
       </PostHead>
+      {actionButtons}
       <PostContent dangerouslySetInnerHTML={{__html: body}} />
       {/* 그냥 작성하면 JSX 에서는 <p>, <b> 가 문자 그대로 나타나기 떄문에 dangerouslySetInnerHTML 라는 props 설정해주어야 함  */}
     </PostViewerBlock>
